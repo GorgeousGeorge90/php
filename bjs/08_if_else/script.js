@@ -39,9 +39,6 @@ let forIt = function (array,test) {
     };
 };
 
-function Timer() {
-    window.setTimeout(Ask(answerNumber1), 3000);
-};
 
 function Ask(answerNumber1) {
     let randomAsk = Math.round(Math.random()*4);
@@ -57,27 +54,22 @@ function Ask(answerNumber1) {
 };
 
 function Timer() {
-    window.setTimeout(function() { Ask(answerNumber1); },3000);
+    window.setTimeout(function() { Ask(answerNumber1); },2000);
 };
 
-
-
-document.querySelector("#btnStart").addEventListener('click', function() {
+document.querySelector("#btnGame").addEventListener('click', function() {
     title.textContent = "Processing...";
-    minValue = document.querySelector("#minValue").value;
-    (Number(minValue) < -999) ? document.querySelector("#minValue").value = - 999: minValue;
-    /*При моей реализации программы данная проверка не требуется
-    minCheck = isNaN(minValue) || minDefault;
-    minValue = minDefault;*/
-    maxValue = document.querySelector("#maxValue").value;
-    (Number(maxValue) > 999) ? document.querySelector("#maxValue").value = 999: maxValue;
-    /*При моей реализации программы данная проверка не требуется
-    maxCheck = isNaN(maxValue) || maxDefault;
-    maxValue = maxDefault;*/
-    minValue = document.querySelector("#minValue").value;
-    maxValue = document.querySelector("#maxValue").value; 
-    answerNumber1 = Math.floor((Number(minValue) + Number(maxValue)) / 2);
+    minValue = +prompt("Введите наименьшее значение!");
+    minValue < -999 ? minValue = - 999: minValue;
+    //minCheck = isNaN(minValue) || minDefault;
+    //minValue = minDefault;
+    maxValue = +prompt("Введите наибольшее значение!");
+    maxValue > 999 ? maxValue = 999: maxValue;
+    //maxCheck = isNaN(maxValue) || maxDefault;
+    //maxValue = maxDefault;
+    answerNumber1 = Math.floor((minValue) +(maxValue) / 2);
     answerNumber2 = (Number(String(answerNumber1).slice()));
+
     if ( answerNumber1 < 0) {
         letterAnswer =letterAnswer + "минус" + " ";
     };
@@ -176,13 +168,13 @@ document.querySelector('#btnEqual').addEventListener('click', function () {
 });
 
 document.querySelector("#btnReset").addEventListener('click', function() {
-    document.querySelector("#minValue").value = 0;
-    document.querySelector("#maxValue").value = 0;
+    minValue = 0;
+    maxValue = 0;
     orderNumber = 0;
     letterAnswer = "";
+    title.textContent = "Time to play the game!";
     orderNumberField.innerText = orderNumber;
     answerField.innerText = `Обнулен\u{1F62E}`;
-
 });
 
 document.querySelector('#home').addEventListener('click', function(event) {
