@@ -1,5 +1,5 @@
 ## MODULE 8 TASK Nostradamu's Game
-![logo](assets/img/logoTest.png)
+![logo](bjs/08_if_else/assets/img/logoTest.png)
 
 ***
 
